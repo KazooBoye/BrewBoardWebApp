@@ -1,0 +1,62 @@
+.custom-navbar {
+    background-color: #d4a170;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.h1 {
+    font-family: system-ui, -apple-system, 'Helvetica Neue';
+    font-weight: lighter;
+    font-size: 42px;
+}
+
+.custom-register-button {
+    border: none;
+    border-radius: 15px;
+    padding: 10px 30px;
+    cursor: pointer;
+    font-family: system-ui, -apple-system, 'Helvetica Neue';
+    font-weight: bold;
+    font-size: 20px;
+    color: #fff;
+    background-color: #b27925;
+    box-shadow: 0 5px 20px #000000;
+    transition: all 0.1s ease;
+}
+
+.custom-register-button:hover {
+    background-color: #f8efda;
+    color: #392408;
+}
+
+.custom-register-button:active {
+    background-color: #f8efda;
+    color: #392408;
+    box-shadow: none;
+}
+
+.custom-signin-button {
+    border: none;
+    border-radius: 15px;
+    background-color: #00000000;
+    color: #000000;
+    padding: 10px 30px;
+    cursor: pointer;
+    font-family: system-ui, -apple-system, 'Helvetica Neue';
+    font-weight: normal;
+
+}
+
+.custom_signin-button:hover {
+    border: none;
+    color: #000000;
+    background-color: transparent !important;
+    box-shadow: 0 5px 20px #000000;
+}
+
+.custom_signin-button:active {
+    border: none;
+    background-color: transparent;
+    color: #000000;
+}
+
