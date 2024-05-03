@@ -30,13 +30,13 @@ function Header() {
                         <Nav.Link href="#link">Recent</Nav.Link>
                     </Nav>
                     <Nav>
-                        <Button className="custom-signin-button">Sign In</Button>
-                        <Button className="custom-register-button">Register</Button>
+                        <Button classname="custom-signin-button" variant=''>Sign In</Button>
+                        <Button className="custom-register-button" variant=''>Register</Button>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
     </Navbar>
-);
+    );
 };
   
   export default Header;

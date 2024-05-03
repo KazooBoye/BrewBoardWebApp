@@ -1,0 +1,37 @@
+.Search {
+    background-color: #f0f0f0; /* Gray background color */
+    padding: 20px; /* Add padding as needed */
+}
+
+.search-input-group {
+    position: relative;
+}
+
+.input-group-append {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.input-group-text {
+    background-color: #fff; /* Adjust background color as needed */
+    border: none;
+}
+
+.customtextitalics {
+    position: relative;
+    padding-left: 20px;
+    font-family: 'Helvetica Neue';
+    font-style: italic;
+    color: #000000;
+}
+
+.customtext {
+    font-family: 'Helvetica Neue';
+    font-style: normal;
+    color: #000000;
+}
