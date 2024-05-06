@@ -1,8 +1,15 @@
 import { Navbar, Nav, Button, Container, Row, Col } from 'react-bootstrap';
 import './BrewBoardLogo.png';
 import './Header.css';
-
+import { useNavigate } from 'react-router-dom'
 function Header() {
+
+    const navigate = useNavigate();
+
+    const HandleRegister = () => {
+        navigate("/register")
+    }
+
     return (
         <Navbar className="custom-navbar" expand="lg">
             <Container>
@@ -31,7 +38,7 @@ function Header() {
                     </Nav>
                     <Nav>
                         <Button classname="custom-signin-button" variant=''>Sign In</Button>
-                        <Button className="custom-register-button" variant=''>Register</Button>
+                        <Button onClick={HandleRegister} className="custom-register-button" variant=''>Register</Button>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
