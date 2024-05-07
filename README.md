@@ -9,7 +9,7 @@ Made with React and Bootstrap for rapid development and responsive design capabi
 ### Install React's library
 ```
 cd BrewBoardWebApp
-npm install react react-dom
+npm install react react-dom react-router-dom
 ```
 ### Download Bootstrap to current React's library
 `npm install bootstrap react-bootstrap`
