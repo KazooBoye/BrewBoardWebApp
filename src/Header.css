@@ -47,15 +47,16 @@
     
 }
 
-.custom_signin-button:hover {
-    border: none;
+.custom-signin-button:hover {
+    border: 4px;
+    border-color: #392408;
     color: #000000;
     background-color: transparent;
     box-shadow: 0 5px 20px #000000;
 }
 
-.custom_signin-button:active {
-    border: none;
+.custom-signin-button:active {
+    border: #392408;
     background-color: transparent;
     color: #000000;
 }
