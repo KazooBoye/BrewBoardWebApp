@@ -12,6 +12,16 @@ cd BrewBoardWebApp
 npm install react react-dom react-router-dom
 ```
 ### Download Bootstrap to current React's library
-`npm install bootstrap react-bootstrap`
+```
+npm install bootstrap react-bootstrap
+```
+### Download and install icon packages
+```
+npm i --save @fortawesome/fontawesome-svg-core
+npm i --save @fortawesome/free-solid-svg-icons
+npm i --save @fortawesome/free-regular-svg-icons
+npm i --save @fortawesome/free-brands-svg-icons
+npm i --save @fortawesome/react-fontawesome@latest
+```
 ### Render the Web app in your browser
 `npm start`
