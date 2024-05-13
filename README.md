@@ -23,5 +23,10 @@ npm i --save @fortawesome/free-regular-svg-icons
 npm i --save @fortawesome/free-brands-svg-icons
 npm i --save @fortawesome/react-fontawesome@latest
 ```
+### Download and install other backend libraries
+```
+npm install axios
+npm install jwt-decode
+```
 ### Render the Web app in your browser
 `npm start`
