@@ -29,14 +29,15 @@ function App() {
         <Route
           path="/"
           element={
-            <ProtectedRoute>
+//            <ProtectedRoute>
               <HomePage />
-            </ProtectedRoute>
+//            </ProtectedRoute>
           }
         />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/register" element={<RegisterAndLogout />} />
+        <Route path="/shoppage" element={<ShopPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

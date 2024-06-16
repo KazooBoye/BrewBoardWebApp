@@ -1,0 +1,27 @@
+.carousel-item-bg {
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+}
+
+.carousel-content {
+    background-color: #483b2eb3;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.carousel-item-bg:nth-child(1) {
+    background-image: url('./Images/BrewBoardLogo.png');
+}
+
+.carousel-item-bg:nth-child(2) {
+    background-image: url('./Images/BrewBoardLogo.png');
+}
+
+.carousel-item-bg:nth-child(3) {
+    background-image: url('./Images/BrewBoardLogo.png');
+}
+
+.carousel-item-bg:nth-child(4) {
+    background-image: url('./Images/BrewBoardLogo.png');
+}

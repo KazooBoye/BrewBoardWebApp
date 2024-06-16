@@ -6,11 +6,13 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 function Search() {
     const locationOptions = [
-        'New York',
-        'Los Angeles',
-        'Chicago',
-        'Houston',
-        'Phoenix',
+        'An Giang', 'Bà Rịa - Vũng Tàu', 'Bạc Liêu', 'Bắc Giang', 'Bắc Kạn', 'Bắc Ninh', 'Bến Tre', 'Bình Định',
+        'Bình Dương', 'Bình Phước', 'Bình Thuận', 'Cà Mau', 'Cao Bằng', 'Đà Nẵng', 'Đắk Lắk', 'Đắk Nông', 'Điện Biên',
+        'Đồng Nai', 'Đồng Tháp', 'Gia Lai', 'Hà Giang', 'Hà Nam', 'Hà Nội', 'Hà Tĩnh', 'Hải Dương', 'Hải Phòng', 'Hậu Giang',
+        'Hòa Bình', 'Hưng Yên', 'Khánh Hòa', 'Kiên Giang', 'Kon Tum', 'Lai Châu', 'Lâm Đồng', 'Lạng Sơn', 'Lào Cai', 'Long An',
+        'Nam Định', 'Nghệ An', 'Ninh Bình', 'Ninh Thuận', 'Phú Thọ', 'Phú Yên', 'Quảng Bình', 'Quảng Nam', 'Quảng Ngãi',
+        'Quảng Ninh', 'Quảng Trị', 'Sóc Trăng', 'Sơn La', 'Tây Ninh', 'Thái Bình', 'Thái Nguyên', 'Thanh Hóa', 'Thừa Thiên Huế',
+        'Tiền Giang', 'Trà Vinh', 'Tuyên Quang', 'Vĩnh Long', 'Vĩnh Phúc', 'Yên Bái'
     ];
     
     return (
@@ -34,19 +36,10 @@ function Search() {
                         </div>
                     </Col>
                     <Col md={2}><div className='customtextitalics'>...or search by location</div></Col>
-                    <Col md={1}><div className='customtext'>State</div></Col>
-                    <Col md={2}>
+                    <Col md={2}><div className='customtext'>City / Province</div></Col>
+                    <Col md={4}>
                         <Form.Select>
-                            <option value="">Select State...</option>
-                            {locationOptions.map((location, index) => (
-                                <option key={index} value={location}>{location}</option>
-                            ))}
-                        </Form.Select>
-                    </Col>
-                    <Col md={1}><div className='customtext'>Town</div></Col>
-                    <Col md={2}>
-                        <Form.Select>
-                            <option value="">Select Town...</option>
+                            <option value="">Select City/Province...</option>
                             {locationOptions.map((location, index) => (
                                 <option key={index} value={location}>{location}</option>
                             ))}

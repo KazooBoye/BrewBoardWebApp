@@ -16,7 +16,7 @@ function Header() {
   return (
     <Navbar className="custom-navbar" expand="lg">
       <Container>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="/">
           <Row className="align-items-center">
             <Col className="align-items-right">
               <img
