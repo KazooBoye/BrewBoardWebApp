@@ -7,7 +7,7 @@ function Body() {
 const navigate = useNavigate();
 
 const HandleRegister = () => {
-    navigate("/shop")
+    navigate("/shoppage")
     }
     return(
         <Container>

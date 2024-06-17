@@ -27,7 +27,6 @@ function MonthlyStats() {
             <Carousel.Item>
                 <div className="carousel-item-bg d-flex justify-content-center align-items-center" style={{ height: '300px' }}>
                     <h3>Top 5 Most Active Users</h3>
-
                 </div>
             </Carousel.Item>
         </Carousel>

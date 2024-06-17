@@ -14,13 +14,18 @@ const provinces = [
 ];
 
 const Register = () => {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [location, setLocation] = useState('');
   const [passwordStrength, setPasswordStrength] = useState(0);
+  const [isShopAccount, setIsShopAccount] = useState(false);
 
+  const handleFirstNameChange = (e) => setFirstName(e.target.value);
+  const handleLastNameChange = (e) => setLastName(e.target.value);
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => {
@@ -30,6 +35,7 @@ const Register = () => {
   };
   const handlePhoneNumberChange = (e) => setPhoneNumber(e.target.value);
   const handleLocationChange = (e) => setLocation(e.target.value);
+  const handleIsShopAccountChange = (e) => setIsShopAccount(e.target.checked);
 
   const calculatePasswordStrength = (password) => {
     let strength = 0;
@@ -45,7 +51,7 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle registration logic
-    console.log('User registered', { username, email, password, phoneNumber, location });
+    console.log('User registered', { firstName, lastName, username, email, password, phoneNumber, location, isShopAccount });
   };
 
   return (
@@ -53,15 +59,20 @@ const Register = () => {
       <div className="brand-logo">
         <h1 className="h1">BrewBoard</h1>
       </div>
-      <Button href="/" className="back-button">
-        <FaArrowLeft /> Back
-      </Button>
       <Row className="w-100">
         <Col md={{ span: 6, offset: 3 }} className="register-form">
           <div className="text-center mb-4">
             <h1 className="h3 mb-3 font-weight-normal">Create an Account</h1>
           </div>
           <Form onSubmit={handleSubmit}>
+            <Form.Group controlId="formBasicFirstName">
+              <Form.Label>First Name</Form.Label>
+              <Form.Control type="text" placeholder="Enter first name" value={firstName} onChange={handleFirstNameChange} />
+            </Form.Group>
+            <Form.Group controlId="formBasicLastName">
+              <Form.Label>Last Name</Form.Label>
+              <Form.Control type="text" placeholder="Enter last name" value={lastName} onChange={handleLastNameChange} />
+            </Form.Group>
             <Form.Group controlId="formBasicUsername">
               <Form.Label>Username</Form.Label>
               <Form.Control type="text" placeholder="Enter username" value={username} onChange={handleUsernameChange} />
@@ -89,8 +100,22 @@ const Register = () => {
                 ))}
               </Form.Control>
             </Form.Group>
+            <Form.Group controlId="formIsShopAccount">
+              <Form.Check
+                type="checkbox"
+                label="Register as a shop account"
+                checked={isShopAccount}
+                onChange={handleIsShopAccountChange}
+              />
+              <small className="text-muted">
+                Registering as a shop account, you will be able to create your shop listing but will be unable to use the check-in/review feature.
+              </small>
+            </Form.Group>
             <Button type="submit" className="w-100 login-button">
               Register
+            </Button>
+            <Button href="/" className="w-100 btn-light">
+              <FaArrowLeft /> Back
             </Button>
           </Form>
           <div className="text-center mt-3">

@@ -6,17 +6,19 @@ import './Login.css';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
 
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
+  const handlePhoneNumberChange = (e) => setPhoneNumber(e.target.value);
   const handleRememberMeChange = (e) => setRememberMe(e.target.checked);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     // Simulate login (replace with actual login logic)
-    const user = { email, password };
+    const user = { email, password, phoneNumber };
 
     if (rememberMe) {
       // Store user info in local storage
@@ -45,24 +47,19 @@ const Login = () => {
       <div className="brand-logo">
         <h1 className="h1">BrewBoard</h1>
       </div>
-      <Button href="/" className="back-button">
-        <FaArrowLeft /> Back
-      </Button>
       <Row className="w-100 justify-content-center">
         <Col md={4}>
           <div className="text-center mb-4">
             <h1 className="h3 mb-3 font-weight-normal">Hi, Welcome back to BrewBoard 👋</h1>
           </div>
           <Form onSubmit={handleSubmit}>
-            <Button variant="light" className="w-100 mb-3">
-              <FaGoogle /> Login with Google
-            </Button>
-            <div className="text-center mb-3">
-              <small className="text-muted">or Login with Email</small>
-            </div>
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Email</Form.Label>
               <Form.Control type="email" placeholder="E.g. johndoe@email.com" value={email} onChange={handleEmailChange} />
+            </Form.Group>
+            <Form.Group controlId="formBasicPhoneNumber"> {/* New form group for phone number */}
+              <Form.Label>or use your Phone Number</Form.Label>
+              <Form.Control type="tel" placeholder="E.g. 012 345 6789" onChange={handlePhoneNumberChange} />
             </Form.Group>
             <Form.Group controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
@@ -74,6 +71,9 @@ const Login = () => {
             </Form.Group>
             <Button variant="primary" type="submit" className="w-100 login-button">
               Login
+            </Button>
+            <Button href="/" className="w-100 btn-light">
+              <FaArrowLeft /> Back
             </Button>
           </Form>
           <div className="text-center mt-3">

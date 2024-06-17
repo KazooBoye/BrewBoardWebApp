@@ -25,22 +25,3 @@
   .login-button:hover {
     background-color: #A0522D;
   }
-  
-  .back-button {
-    position: absolute;
-    top: 100px;
-    left: 1200px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    color: #000;
-    background-color: #dcc8a3;
-    border-color: #392408;
-  }
-  .back-button:hover {
-    background-color: #7a511e;
-    border-color: #392408;
-  }
-  .back-button svg {
-    margin-right: 5px;
-  }
