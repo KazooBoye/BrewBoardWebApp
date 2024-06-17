@@ -10,6 +10,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import ShopPage from "./pages/ShopPage";
 import NotFound from "./NotFound";
+import UpdateShopPage from './pages/UpdateShopPage';
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function Logout() {
@@ -38,6 +39,7 @@ function App() {
         <Route path="/logout" element={<Logout />} />
         <Route path="/register" element={<RegisterAndLogout />} />
         <Route path="/shoppage" element={<ShopPage />} />
+        <Route path="/updateshop" element={<UpdateShopPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
