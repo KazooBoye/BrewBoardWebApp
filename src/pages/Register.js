@@ -1,26 +1,87 @@
-import React, { useState } from 'react';
-import { Container, Row, Col, Form, Button, ProgressBar } from 'react-bootstrap';
-import { FaArrowLeft } from 'react-icons/fa';
-import './Register.css';
+import React, { useState } from "react";
+import {
+  Container,
+  Row,
+  Col,
+  Form,
+  Button,
+  ProgressBar,
+} from "react-bootstrap";
+import { FaArrowLeft } from "react-icons/fa";
+import "./Register.css";
 
 const provinces = [
-  'An Giang', 'Bà Rịa - Vũng Tàu', 'Bạc Liêu', 'Bắc Giang', 'Bắc Kạn', 'Bắc Ninh', 'Bến Tre', 'Bình Định',
-  'Bình Dương', 'Bình Phước', 'Bình Thuận', 'Cà Mau', 'Cao Bằng', 'Đà Nẵng', 'Đắk Lắk', 'Đắk Nông', 'Điện Biên',
-  'Đồng Nai', 'Đồng Tháp', 'Gia Lai', 'Hà Giang', 'Hà Nam', 'Hà Nội', 'Hà Tĩnh', 'Hải Dương', 'Hải Phòng', 'Hậu Giang',
-  'Hòa Bình', 'Hưng Yên', 'Khánh Hòa', 'Kiên Giang', 'Kon Tum', 'Lai Châu', 'Lâm Đồng', 'Lạng Sơn', 'Lào Cai', 'Long An',
-  'Nam Định', 'Nghệ An', 'Ninh Bình', 'Ninh Thuận', 'Phú Thọ', 'Phú Yên', 'Quảng Bình', 'Quảng Nam', 'Quảng Ngãi',
-  'Quảng Ninh', 'Quảng Trị', 'Sóc Trăng', 'Sơn La', 'Tây Ninh', 'Thái Bình', 'Thái Nguyên', 'Thanh Hóa', 'Thừa Thiên Huế',
-  'Tiền Giang', 'Trà Vinh', 'Tuyên Quang', 'Vĩnh Long', 'Vĩnh Phúc', 'Yên Bái'
+  "An Giang",
+  "Bà Rịa - Vũng Tàu",
+  "Bạc Liêu",
+  "Bắc Giang",
+  "Bắc Kạn",
+  "Bắc Ninh",
+  "Bến Tre",
+  "Bình Định",
+  "Bình Dương",
+  "Bình Phước",
+  "Bình Thuận",
+  "Cà Mau",
+  "Cao Bằng",
+  "Đà Nẵng",
+  "Đắk Lắk",
+  "Đắk Nông",
+  "Điện Biên",
+  "Đồng Nai",
+  "Đồng Tháp",
+  "Gia Lai",
+  "Hà Giang",
+  "Hà Nam",
+  "Hà Nội",
+  "Hà Tĩnh",
+  "Hải Dương",
+  "Hải Phòng",
+  "Hậu Giang",
+  "Hòa Bình",
+  "Hưng Yên",
+  "Khánh Hòa",
+  "Kiên Giang",
+  "Kon Tum",
+  "Lai Châu",
+  "Lâm Đồng",
+  "Lạng Sơn",
+  "Lào Cai",
+  "Long An",
+  "Nam Định",
+  "Nghệ An",
+  "Ninh Bình",
+  "Ninh Thuận",
+  "Phú Thọ",
+  "Phú Yên",
+  "Quảng Bình",
+  "Quảng Nam",
+  "Quảng Ngãi",
+  "Quảng Ninh",
+  "Quảng Trị",
+  "Sóc Trăng",
+  "Sơn La",
+  "Tây Ninh",
+  "Thái Bình",
+  "Thái Nguyên",
+  "Thanh Hóa",
+  "Thừa Thiên Huế",
+  "Tiền Giang",
+  "Trà Vinh",
+  "Tuyên Quang",
+  "Vĩnh Long",
+  "Vĩnh Phúc",
+  "Yên Bái",
 ];
 
 const Register = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [location, setLocation] = useState('');
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [location, setLocation] = useState("");
   const [passwordStrength, setPasswordStrength] = useState(0);
   const [isShopAccount, setIsShopAccount] = useState(false);
 
@@ -50,12 +111,44 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle registration logic
-    console.log('User registered', { firstName, lastName, username, email, password, phoneNumber, location, isShopAccount });
+
+    const userData = {
+      firstName,
+      lastName,
+      username,
+      email,
+      password,
+      phoneNumber,
+      location,
+      isShopAccount,
+    };
+
+    console.log("Submitting user data:", userData);
+
+    fetch("http://127.0.0.1:8000/api/register/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.redirect) {
+          // Redirect to login page
+          window.location.href = data.redirect;
+        }
+      })
+      .catch((error) => {
+        console.error("Error registering user:", error);
+      });
   };
 
   return (
-    <Container fluid className="register-container vh-100 d-flex justify-content-center align-items-center">
+    <Container
+      fluid
+      className="register-container vh-100 d-flex justify-content-center align-items-center"
+    >
       <div className="brand-logo">
         <h1 className="h1">BrewBoard</h1>
       </div>
@@ -67,36 +160,76 @@ const Register = () => {
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="formBasicFirstName">
               <Form.Label>First Name</Form.Label>
-              <Form.Control type="text" placeholder="Enter first name" value={firstName} onChange={handleFirstNameChange} />
+              <Form.Control
+                type="text"
+                placeholder="Enter first name"
+                value={firstName}
+                onChange={handleFirstNameChange}
+              />
             </Form.Group>
             <Form.Group controlId="formBasicLastName">
               <Form.Label>Last Name</Form.Label>
-              <Form.Control type="text" placeholder="Enter last name" value={lastName} onChange={handleLastNameChange} />
+              <Form.Control
+                type="text"
+                placeholder="Enter last name"
+                value={lastName}
+                onChange={handleLastNameChange}
+              />
             </Form.Group>
             <Form.Group controlId="formBasicUsername">
               <Form.Label>Username</Form.Label>
-              <Form.Control type="text" placeholder="Enter username" value={username} onChange={handleUsernameChange} />
+              <Form.Control
+                type="text"
+                placeholder="Enter username"
+                value={username}
+                onChange={handleUsernameChange}
+              />
             </Form.Group>
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Email</Form.Label>
-              <Form.Control type="email" placeholder="E.g. johndoe@brewboard.com" value={email} onChange={handleEmailChange} />
+              <Form.Control
+                type="email"
+                placeholder="E.g. johndoe@brewboard.com"
+                value={email}
+                onChange={handleEmailChange}
+              />
             </Form.Group>
             <Form.Group controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Enter your password" value={password} onChange={handlePasswordChange} />
+              <Form.Control
+                type="password"
+                placeholder="Enter your password"
+                value={password}
+                onChange={handlePasswordChange}
+              />
               <div>Password Strength</div>
-              <ProgressBar now={passwordStrength} label={`${passwordStrength}%`} className="mt-2" />
+              <ProgressBar
+                now={passwordStrength}
+                label={`${passwordStrength}%`}
+                className="mt-2"
+              />
             </Form.Group>
             <Form.Group controlId="formBasicPhoneNumber">
               <Form.Label>Phone Number</Form.Label>
-              <Form.Control type="text" placeholder="Enter phone number" value={phoneNumber} onChange={handlePhoneNumberChange} />
+              <Form.Control
+                type="text"
+                placeholder="Enter phone number"
+                value={phoneNumber}
+                onChange={handlePhoneNumberChange}
+              />
             </Form.Group>
             <Form.Group controlId="formBasicLocation">
               <Form.Label>Current Location</Form.Label>
-              <Form.Control as="select" value={location} onChange={handleLocationChange}>
+              <Form.Control
+                as="select"
+                value={location}
+                onChange={handleLocationChange}
+              >
                 <option value="">Select your location</option>
                 {provinces.map((province, index) => (
-                  <option key={index} value={province}>{province}</option>
+                  <option key={index} value={province}>
+                    {province}
+                  </option>
                 ))}
               </Form.Control>
             </Form.Group>
@@ -108,7 +241,9 @@ const Register = () => {
                 onChange={handleIsShopAccountChange}
               />
               <small className="text-muted">
-                Registering as a shop account, you will be able to create your shop listing but will be unable to use the check-in/review feature.
+                Registering as a shop account, you will be able to create your
+                shop listing but will be unable to use the check-in/review
+                feature.
               </small>
             </Form.Group>
             <Button type="submit" className="w-100 login-button">
@@ -119,7 +254,12 @@ const Register = () => {
             </Button>
           </Form>
           <div className="text-center mt-3">
-            <small className="text-muted">Already have an account? <a href="/login" className="text-primary">Login here</a></small>
+            <small className="text-muted">
+              Already have an account?{" "}
+              <a href="/login" className="text-primary">
+                Login here
+              </a>
+            </small>
           </div>
         </Col>
       </Row>
