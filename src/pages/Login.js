@@ -1,13 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Form, Button, Navbar } from "react-bootstrap";
-import { FaGoogle, FaArrowLeft } from "react-icons/fa";
+// Login.js
+import React, { useState, useEffect, useContext } from "react";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { FaArrowLeft } from "react-icons/fa";
 import "./Login.css";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../AuthContext"; // Adjust the path as per your project structure
 
 const Login = () => {
+  const { setIsActive } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [phone_number, setPhoneNumber] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
+  const navigate = useNavigate();
 
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
@@ -23,14 +28,14 @@ const Login = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password, phoneNumber }),
+        body: JSON.stringify({ email, password, phone_number }),
       });
 
       if (!response.ok) {
         throw new Error("Invalid credentials");
       }
-      // Assuming successful login clears local storage and stores user info
-      const user = { email, password };
+
+      const user = { email, password, phone_number };
 
       if (rememberMe) {
         localStorage.setItem("user", JSON.stringify(user));
@@ -38,11 +43,8 @@ const Login = () => {
         localStorage.removeItem("user");
       }
 
-      console.log("User logged in", user);
-
-      // Redirect or navigate to another page upon successful login
-
-      window.location.href = "/";
+      setIsActive(true); // Set is_active to true upon successful login
+      navigate("/"); // Redirect or navigate to another page upon successful login
     } catch (error) {
       console.error("Error logging in:", error.message);
       // Handle error, e.g., display an error message to the user
@@ -85,8 +87,6 @@ const Login = () => {
               />
             </Form.Group>
             <Form.Group controlId="formBasicPhoneNumber">
-              {" "}
-              {/* New form group for phone number */}
               <Form.Label>or use your Phone Number</Form.Label>
               <Form.Control
                 type="tel"
